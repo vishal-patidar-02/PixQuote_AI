@@ -1,6 +1,6 @@
 # Background Remover AI 🖼️
 
-**Background Remover AI** is a simple yet powerful tool that uses AI to remove backgrounds from images. Built with the MERN stack (MongoDB, Express.jtrrts, React.js, Node.js), it’s perfect for quick background removal tasks.
+**Background Remover AI** is a simple yet powerful tool that uses AI to remove backgrounds from images. Built with the MERN stack (MongoDB, Express.js, React.js, Node.js), it’s perfect for quick background removal tasks.
 
 ---
 
