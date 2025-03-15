@@ -4,8 +4,10 @@ import { assets } from '../assets/assets'
 const Footer = () => {
   return (
     <div className='flex items-center justify-between gap-4 lg:px-44 py-3'>
-        <img width={150} src={assets.logo} alt="" />
-        <p className='flex-1  border-gray-400 pl-4 text-sm text-gray-500 max-sm:hidden'>|  Copyright @VishalPatidar.dev  |  All right reserved</p>
+        <img width={40} src={assets.logo_icon} alt="" />
+        <p className='mr-2 font-bold text-xl text-black'>PixQuote AI</p>
+        <p className='flex-1  border-gray-400 pl-4 text-sm text-gray-500 max-sm:hidden'>
+            |  Copyright @VishalPatidar.dev  |  All right reserved</p>
         <div className='flex gap-1'>
             <img width={40} src={assets.facebook_icon} alt="" />
             <img width={40} src={assets.twitter_icon} alt="" />
@@ -15,4 +17,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default Footer;
