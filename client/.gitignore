@@ -1,3 +1,5 @@
+*.env
+
 # Logs
 logs
 *.log
@@ -7,7 +9,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+
 node_modules
+C:\Users\abc\Desktop\BgRemoval\client\.env
 dist
 dist-ssr
 *.local
