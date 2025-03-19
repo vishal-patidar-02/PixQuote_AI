@@ -43,7 +43,8 @@ const clerkWebhooks = async (req, res) => {
           photo: data.image_url,
         };
 
-        await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
+        let status = await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
+        console.log("DAta base-------------",status);
         console.log("User updated successfully", userData);
         res.json({ success: true, message: "User updated successfully" });
 
