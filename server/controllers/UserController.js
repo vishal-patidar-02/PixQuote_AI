@@ -52,9 +52,13 @@ const clerkWebhooks = async (req, res) => {
       }
 
       case "user.deleted": {
-        await userModel.findOneAndDelete({ clerkId: data.id });
-        console.log("User deleted successfully");
-        res.json({ success: true, message: "User deleted successfully" });
+        let status = await userModel.findOneAndDelete({ clerkId: data.id });
+        if(status){
+          console.log("User deleted successfully", data.id);
+          res.json({ success: true, message: "User deleted successfully" });
+        }else{  
+          log.error("User not found", data.id);
+        }
         break;
       }
 
