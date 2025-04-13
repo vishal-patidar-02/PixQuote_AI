@@ -15,7 +15,6 @@ const clerkWebhooks = async (req, res) => {
     });
 
     const { data, type } = req.body;
-    console.log("Clerk Webhooks", type, data);
 
     switch (type) {
       case "user.created": {
@@ -29,8 +28,7 @@ const clerkWebhooks = async (req, res) => {
         };
 
         await userModel.create(userData);
-        console.log("User created successfully", userData);
-        res.json({ success: true, message: "User created successfully" });
+        res.json({});
 
         break;
       }
@@ -43,22 +41,14 @@ const clerkWebhooks = async (req, res) => {
           photo: data.image_url,
         };
 
-        let status = await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
-        console.log("DAta base-------------",status);
-        console.log("User updated successfully", userData);
-        res.json({ success: true, message: "User updated successfully" });
+        await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
+        res.json({});
 
         break;
       }
 
       case "user.deleted": {
-        let status = await userModel.findOneAndDelete({ clerkId: data.id });
-        if(status){
-          console.log("User deleted successfully", data.id);
-          res.json({ success: true, message: "User deleted successfully" });
-        }else{  
-          log.error("User not found", data.id);
-        }
+        await userModel.findOneAndDelete({ clerkId: data.id });
         break;
       }
 
@@ -71,4 +61,22 @@ const clerkWebhooks = async (req, res) => {
   }
 };
 
-export { clerkWebhooks };
+//Api Controller Function to get user available credits data
+const UserCredits = async (req, res) => {
+  try {
+    const { clerkId } = req.body;
+
+    const userData = await userModel.findOne({ clerkId });
+
+    res.json({
+      success: true,
+      credits: userData.creditBalance,
+    });
+
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { clerkWebhooks, UserCredits };
